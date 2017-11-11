@@ -1,0 +1,49 @@
+include ../../../node_modules/bemto.pug/bemto.pug // https://github.com/kizu/bemto
+
+include ../blocks/icon.pug
+include ../blocks/header.pug
+include ../blocks/footer.pug
+
+block variables
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+
+    title #{pageTitle || "Title"} 
+
+    link(rel="shortcut icon", href="img/favicon.ico", type="image/x-icon")
+    link(rel="stylesheet", href="css/main.css")
+    block styles
+
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="format-detection", content="telephone=no")
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexibility/2.0.1/flexibility.js"></script>
+    <![endif]-->
+  +b.BODY.page(class=bodyAdditionalClass)
+    +b.svg-sprite
+
+    block header
+      +header
+
+    block content
+
+    block footer
+      +footer
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="js/vendor.js")
+    script(src="js/scripts.js")
+    block scripts
+
+    block svg
+      //script.
+      //  var svgArray = [
+      //    "./images/sprite_icons.svg"
+      //  ];
