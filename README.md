@@ -1,6 +1,5 @@
 # Gulp-Pug-SASS-BEM boilerplate
 
-
 ## Getting Started
 
 1. Install [node.js](https://nodejs.org/en/)
@@ -28,6 +27,8 @@
       `gulp`
 
 6. Open [http://localhost:3000](http://localhost:3000/) and start coding
+
+How to use bemto, pug mixins for writing BEM - https://github.com/kizu/bemto
 
 ## Have questions, ideas or wishes?
 Telegram - [@silencerweb](https://telegram.me/silencerweb)
