@@ -1,4 +1,3 @@
-// set PATH=./node_modules/.bin;%PATH%
 var gulp = require("gulp"),
   plugins = require("gulp-load-plugins")(),
   browserSync = require("browser-sync"),
@@ -42,8 +41,7 @@ var path = {
     js: "dist/js",
     fonts: "dist/fonts",
     images: "dist/images",
-    videos: "dist/videos",
-    server: "dist/server"
+    videos: "dist/videos"
   },
   src: {
     pug: "src/*.pug",
@@ -59,8 +57,7 @@ var path = {
       gif: "src/images/**/*.gif",
       svg: "src/images/**/*.svg"
     },
-    videos: "src/videos/**",
-    server: "src/server/**/**"
+    videos: "src/videos/**"
   },
   watch: {
     svgFiles: "./src/svg/**/*.svg",
@@ -72,8 +69,7 @@ var path = {
     js: "src/js/**/*.js",
     fonts: "src/fonts/**/*.*",
     images: "src/images/**/*.*",
-    videos: "src/videos/**/*.*",
-    server: "src/server/**/**"
+    videos: "src/videos/**/*.*"
   },
   rev: [
     "dist/css/**/*.css",
@@ -138,7 +134,6 @@ gulp.task("svg-styles", require("./gulp-tasks/svg-styles")(path, gulp, plugins))
 gulp.task("svg-store", require("./gulp-tasks/svg-store")(path, gulp, plugins, svgFileName));
 
 gulp.task("fonts", require("./gulp-tasks/transfer")(gulp, plugins, path.src.fonts, path.build.fonts));
-gulp.task("server", require("./gulp-tasks/transfer")(gulp, plugins, path.src.server, path.build.server));
 gulp.task("videos", require("./gulp-tasks/transfer")(gulp, plugins, path.src.videos, path.build.videos));
 
 gulp.task("rev", require("./gulp-tasks/rev")(path, gulp, plugins));
@@ -157,7 +152,6 @@ gulp.task("watch", function () {
   gulp.watch(path.watch.js, gulp.series("js:dev", "reload"));
   gulp.watch(path.watch.images, gulp.series("images:dev", "reload"));
   gulp.watch(path.watch.fonts, gulp.series("fonts", "reload"));
-  gulp.watch(path.watch.server, gulp.series("server", "reload"));
   gulp.watch(path.watch.videos, gulp.series("videos", "reload"));
 
   gulp.watch(path.watch.svgFiles, gulp.series("svg-styles", "svg-store", "sass:dev", "reload"))
@@ -207,7 +201,6 @@ gulp.task("build:dev", gulp.series(
   gulp.parallel(
     "js:dev",
     "fonts",
-    "server",
     "videos",
     "images:dev"
   )
@@ -224,7 +217,6 @@ gulp.task("build:prod", gulp.series(
   gulp.parallel(
     "js:prod",
     "fonts",
-    "server",
     "videos",
     "images:prod"
   ),
